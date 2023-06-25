@@ -18,6 +18,12 @@ namespace ProtoType
             Address = address;
         }
 
+        public Person(Person other)
+        {
+            Names  = (string[]?)other.Names.Clone() ?? throw new ArgumentNullException();
+            Address = new IClonableAddress(other.Address);
+        }
+
         public override string ToString()
         {
             return $"{nameof(Names)}: {string.Join(",", Names)}, {nameof(Address)}: {Address}";

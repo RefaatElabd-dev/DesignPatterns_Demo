@@ -132,7 +132,8 @@ namespace DesignPattern_Demo
             //Console.WriteLine(personFactory.CreatePerson("Refaat").ToString());
             var john = new Person(new[] { "John", "Smith" }, new IClonableAddress("London Road", 123));
 
-            var jane = (Person)john.Clone();
+            //var jane = (Person)john.Clone();
+            var jane = new Person(john);
             jane.Address.HouseNumber = 321; // oops, John is now at 321
 
             // this doesn't work
