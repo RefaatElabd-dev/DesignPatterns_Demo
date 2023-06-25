@@ -6,10 +6,13 @@ using Coding.Exercise;
 using DotNetDesignPatternDemos.Creational.Factories;
 using Factory.AbstractFactory;
 using OSP;
+using ProtoType;
 using SRP;
 using System.Diagnostics;
+using System.Net;
 using static OSP.Specifications;
 using static System.Console;
+using Person = ProtoType.Person;
 
 namespace DesignPattern_Demo
 {
@@ -125,8 +128,22 @@ namespace DesignPattern_Demo
             //hotDrink2.Consume();
 
             //test PersonFactory
-            PersonFactory personFactory = new PersonFactory();
-            Console.WriteLine(personFactory.CreatePerson("Refaat").ToString());
+            //PersonFactory personFactory = new PersonFactory();
+            //Console.WriteLine(personFactory.CreatePerson("Refaat").ToString());
+            var john = new Person(new[] { "John", "Smith" }, new IClonableAddress("London Road", 123));
+
+            var jane = (Person)john.Clone();
+            jane.Address.HouseNumber = 321; // oops, John is now at 321
+
+            // this doesn't work
+            //var jane = john;
+
+            // but clone is typically shallow copy
+            jane.Names[0] = "Jane";
+
+            WriteLine(john);
+            WriteLine(jane);
+
         }
     }
 }
