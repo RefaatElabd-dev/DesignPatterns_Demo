@@ -2,6 +2,9 @@
 using Builder.FluentBuilderInhertanceRecursiveGenerics;
 using Builder.FunctionalBuilder;
 using Builder.StepWiseBuilder;
+using Coding.Exercise;
+using DotNetDesignPatternDemos.Creational.Factories;
+using Factory.AbstractFactory;
 using OSP;
 using SRP;
 using System.Diagnostics;
@@ -93,19 +96,37 @@ namespace DesignPattern_Demo
             //Console.WriteLine(person);
 
             //Faceted Builder
-            var pb = new Builder.FasetedBuilder.PersonBuilder();
-            Builder.FasetedBuilder.Person person = pb
-              .Lives
-                .At("123 London Road")
-                .In("London")
-                .WithPostcode("SW12BC")
-              .Works
-                .At("Fabrikam")
-                .AsA("Engineer")
-                .Earning(123000);
+            //var pb = new Builder.FasetedBuilder.PersonBuilder();
+            //Builder.FasetedBuilder.Person person = pb
+            //  .Lives
+            //    .At("123 London Road")
+            //    .In("London")
+            //    .WithPostcode("SW12BC")
+            //  .Works
+            //    .At("Fabrikam")
+            //    .AsA("Engineer")
+            //    .Earning(123000);
 
-            WriteLine(person);
+            //WriteLine(person);
 
+            //Factory
+            //var p1 = new Point(2, 3, Point.CoordinateSystem.Cartesian);
+            //var origin = Point.Origin;
+
+            //var p2 = Point.Factory.NewCartesianPoint(1, 2);
+
+            //AbstractFactory
+            //HotDrinkMachine hotDrinkMachine = new HotDrinkMachine();
+            //IHotDrink hotDrink = hotDrinkMachine.MakeADrink(HotDrinkMachine.AvailableDrinks.Tea, 100, 3, false);
+            //hotDrink.Consume();
+
+            //HotDrinkMachineOCP hotDrinkMachineOCP = new HotDrinkMachineOCP();
+            //IHotDrink hotDrink2 = hotDrinkMachineOCP.MakeDrink();
+            //hotDrink2.Consume();
+
+            //test PersonFactory
+            PersonFactory personFactory = new PersonFactory();
+            Console.WriteLine(personFactory.CreatePerson("Refaat").ToString());
         }
     }
 }
