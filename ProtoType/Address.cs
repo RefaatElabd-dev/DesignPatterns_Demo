@@ -1,6 +1,6 @@
 ﻿namespace ProtoType
 {
-    public class IClonableAddress : ICloneable
+    public class IClonableAddress : ICloneable, IProtoType<IClonableAddress>
     {
         private IClonableAddress address;
 
@@ -26,6 +26,11 @@
         public object Clone()
         {
            return new IClonableAddress(StreetName, HouseNumber);
+        }
+
+        public IClonableAddress DeepCopy()
+        {
+            return new IClonableAddress(StreetName, HouseNumber);
         }
     }
 }

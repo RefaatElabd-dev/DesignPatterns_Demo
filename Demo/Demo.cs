@@ -133,7 +133,8 @@ namespace DesignPattern_Demo
             var john = new Person(new[] { "John", "Smith" }, new IClonableAddress("London Road", 123));
 
             //var jane = (Person)john.Clone();
-            var jane = new Person(john);
+            //var jane = new Person(john);
+            var jane = john.DeepCopy();
             jane.Address.HouseNumber = 321; // oops, John is now at 321
 
             // this doesn't work
