@@ -1,12 +1,9 @@
 ﻿namespace Singlton
 {
-    public class SingletonDB: IDB
+    public class OrdinaryDB: IDB
     {
         private Dictionary<string, int> capitals;
-        private static int instanceCount;
-        public static int Count => instanceCount;
-
-        private SingletonDB()
+        public OrdinaryDB()
         {
             Console.WriteLine("Initializing database");
 
@@ -24,14 +21,5 @@
         {
             return capitals[name];
         }
-
-        // laziness + thread safety
-        private static Lazy<SingletonDB> instance = new Lazy<SingletonDB>(() =>
-        {
-            instanceCount++;
-            return new SingletonDB();
-        });
-
-        public static IDB Instance => instance.Value;
     }
 }
