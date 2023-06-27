@@ -130,21 +130,35 @@ namespace DesignPattern_Demo
             //test PersonFactory
             //PersonFactory personFactory = new PersonFactory();
             //Console.WriteLine(personFactory.CreatePerson("Refaat").ToString());
-            var john = new Person(new[] { "John", "Smith" }, new IClonableAddress("London Road", 123));
+            //var john = new Person(new[] { "John", "Smith" }, new IClonableAddress("London Road", 123));
 
             //var jane = (Person)john.Clone();
             //var jane = new Person(john);
-            var jane = john.DeepCopy();
-            jane.Address.HouseNumber = 321; // oops, John is now at 321
+            //var jane = john.DeepCopy();
+            //jane.Address.HouseNumber = 321; // oops, John is now at 321
 
             // this doesn't work
             //var jane = john;
 
             // but clone is typically shallow copy
-            jane.Names[0] = "Jane";
+            //jane.Names[0] = "Jane";
+
+            //WriteLine(john);
+            //WriteLine(jane);
+
+            //inhertance // that approach doesn't scale: every child will ReConstruct and call his base
+            var john = new Employee();
+            john.Names = new[] { "John", "Doe" };
+            john.Address = new IClonableAddress { HouseNumber = 123, StreetName = "London Road" };
+            john.Salary = 321000;
+            var copy = john.DeepCopy();
+
+            copy.Names[1] = "Smith";
+            copy.Address.HouseNumber++;
+            copy.Salary = 123000;
 
             WriteLine(john);
-            WriteLine(jane);
+            WriteLine(copy);
 
         }
     }

@@ -1,11 +1,15 @@
 ﻿namespace ProtoType
 {
-    public class IClonableAddress : ICloneable, IProtoType<IClonableAddress>
+    public class IClonableAddress : ICloneable, IProtoType<IClonableAddress>, IDeepCopyably<IClonableAddress>
     {
         private IClonableAddress address;
 
         public int HouseNumber { get; set; }
         public string StreetName { get; set; }
+        public IClonableAddress()
+        {
+
+        }
         public IClonableAddress(string streetName, int houseNumber)
         {
             StreetName = streetName;
@@ -28,9 +32,14 @@
            return new IClonableAddress(StreetName, HouseNumber);
         }
 
-        public IClonableAddress DeepCopy()
+        public IClonableAddress DeepCopy1()
         {
             return new IClonableAddress(StreetName, HouseNumber);
+        }
+
+        public IClonableAddress DeepCopy()
+        {
+            return (IClonableAddress) MemberwiseClone();
         }
     }
 }

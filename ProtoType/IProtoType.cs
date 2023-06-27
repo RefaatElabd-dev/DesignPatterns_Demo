@@ -1,7 +1,7 @@
 ﻿namespace ProtoType
 {
-    public interface IProtoType<T>
+    public interface IProtoType<out T>
     {
-        T DeepCopy();
+        T DeepCopy1();
     }
 }

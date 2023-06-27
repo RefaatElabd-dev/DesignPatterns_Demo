@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ProtoType
+﻿namespace ProtoType
 {
-    public class Person : ICloneable, IProtoType<Person>
+    public class Person : ICloneable, IProtoType<Person>, IDeepCopyably<Person>
     {
-        public readonly string[] Names;
-        public readonly IClonableAddress Address;
-        private Func<object> clone;
+        public string[] Names;
+        public IClonableAddress Address;
 
+        public Person()
+        {
+
+        }
         public Person(string[]? names, IClonableAddress address)
         {
             Names = names ?? throw new ArgumentNullException();
@@ -25,11 +21,6 @@ namespace ProtoType
             Address = new IClonableAddress(other.Address);
         }
 
-        public Person(Func<object> clone)
-        {
-            this.clone = clone;
-        }
-
         public override string ToString()
         {
             return $"{nameof(Names)}: {string.Join(",", Names)}, {nameof(Address)}: {Address}";
@@ -38,6 +29,11 @@ namespace ProtoType
         public object Clone()
         {
             return new Person(Names, (IClonableAddress)Address.Clone());
+        }
+
+        public Person DeepCopy1()
+        {
+            return new Person((string[])Names.Clone(), Address.DeepCopy1());
         }
 
         public Person DeepCopy()
