@@ -164,12 +164,23 @@ namespace DesignPattern_Demo
             //WriteLine(john);
             //WriteLine(copy);
 
-            var db = SingletonDB.Instance;
+            //var db = SingletonDB.Instance;
+            //
+            //// works just fine while you're working with a real database.
+            //var city = "Tokyo";
+            //WriteLine($"{city} has population {db.GetPopulation(city)}");
 
-            // works just fine while you're working with a real database.
-            var city = "Tokyo";
-            WriteLine($"{city} has population {db.GetPopulation(city)}");
-
+            //per Thread Singleton
+            var t1 = Task.Factory.StartNew(() =>
+            {
+                WriteLine($"t1: " + PerThreadSingleton.Instance.Id);
+            });
+            var t2 = Task.Factory.StartNew(() =>
+            {
+                WriteLine($"t2: " + PerThreadSingleton.Instance.Id);
+                WriteLine($"t2 again: " + PerThreadSingleton.Instance.Id);
+            });
+            Task.WaitAll(t1, t2);
         }
     }
 }
