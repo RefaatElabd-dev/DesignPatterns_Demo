@@ -153,6 +153,9 @@ namespace DesignPattern_Demo
             john.Salary = 321000;
             var copy = john.DeepCopy();
 
+            //var e = john.DeepCopy<Employee>();
+            //var p = john.DeepCopy<Person>();
+
             copy.Names[1] = "Smith";
             copy.Address.HouseNumber++;
             copy.Salary = 123000;

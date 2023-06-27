@@ -1,6 +1,6 @@
 ﻿namespace ProtoType
 {
-    public class Person : ICloneable, IProtoType<Person>, IDeepCopyably<Person>
+    public class Person : ICloneable, IProtoType<Person>, IDeepCopyable<Person>
     {
         public string[] Names;
         public IClonableAddress Address;
@@ -36,9 +36,10 @@
             return new Person((string[])Names.Clone(), Address.DeepCopy1());
         }
 
-        public Person DeepCopy()
+        public void CopyTo(Person target)
         {
-            return new Person((string[])Names.Clone(), Address.DeepCopy());
+            target.Names = (string[])Names.Clone();
+            target.Address = Address.DeepCopy();
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProtoType
 {
-    public class Employee: Person, IDeepCopyably<Employee>
+    public class Employee: Person, IDeepCopyable<Employee>
     {
         public int Salary { get; set; }
         public Employee()
@@ -24,9 +24,10 @@ namespace ProtoType
             return $"{base.ToString()}, {nameof(Salary)}: {Salary}";
         }
 
-        public Employee DeepCopy()
-        {   
-            return new Employee((string[]?)Names.Clone(), Address.DeepCopy(), Salary);
+        public void CopyTo(Employee target)
+        {
+            base.CopyTo(target);
+            target.Salary = Salary;
         }
     }
 }
