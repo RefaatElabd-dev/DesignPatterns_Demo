@@ -7,6 +7,7 @@ using DotNetDesignPatternDemos.Creational.Factories;
 using Factory.AbstractFactory;
 using OSP;
 using ProtoType;
+using Singlton;
 using SRP;
 using System.Diagnostics;
 using System.Net;
@@ -147,21 +148,27 @@ namespace DesignPattern_Demo
             //WriteLine(jane);
 
             //inhertance // that approach doesn't scale: every child will ReConstruct and call his base
-            var john = new Employee();
-            john.Names = new[] { "John", "Doe" };
-            john.Address = new IClonableAddress { HouseNumber = 123, StreetName = "London Road" };
-            john.Salary = 321000;
-            var copy = john.DeepCopyXml();
+            //var john = new Employee();
+            //john.Names = new[] { "John", "Doe" };
+            //john.Address = new IClonableAddress { HouseNumber = 123, StreetName = "London Road" };
+            //john.Salary = 321000;
+            //var copy = john.DeepCopyXml();
 
-            //var e = john.DeepCopy<Employee>();
-            //var p = john.DeepCopy<Person>();
+            ////var e = john.DeepCopy<Employee>();
+            ////var p = john.DeepCopy<Person>();
 
-            copy.Names[1] = "Smith";
-            copy.Address.HouseNumber++;
-            copy.Salary = 123000;
+            //copy.Names[1] = "Smith";
+            //copy.Address.HouseNumber++;
+            //copy.Salary = 123000;
 
-            WriteLine(john);
-            WriteLine(copy);
+            //WriteLine(john);
+            //WriteLine(copy);
+
+            var db = SingletonDB.Instance;
+
+            // works just fine while you're working with a real database.
+            var city = "Tokyo";
+            WriteLine($"{city} has population {db.GetPopulation(city)}");
 
         }
     }
