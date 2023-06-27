@@ -151,7 +151,7 @@ namespace DesignPattern_Demo
             john.Names = new[] { "John", "Doe" };
             john.Address = new IClonableAddress { HouseNumber = 123, StreetName = "London Road" };
             john.Salary = 321000;
-            var copy = john.DeepCopy();
+            var copy = john.DeepCopyXml();
 
             //var e = john.DeepCopy<Employee>();
             //var p = john.DeepCopy<Person>();

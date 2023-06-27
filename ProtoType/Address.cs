@@ -1,6 +1,6 @@
 ﻿namespace ProtoType
 {
-    public class IClonableAddress : ICloneable, IProtoType<IClonableAddress>, IDeepCopyable<IClonableAddress>
+    public class IClonableAddress
     {
         private IClonableAddress address;
 
