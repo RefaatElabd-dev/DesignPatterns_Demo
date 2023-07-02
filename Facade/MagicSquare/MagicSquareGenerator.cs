@@ -4,23 +4,23 @@
     {
         public List<List<int>> Generate(int size)
         {
+            var square =new List<List<int>>();
+            Generator generator = new Generator();
+            Splitter spliter = new Splitter();
+            Verifier verifier = new Verifier();
             while (true)
             {
-                var square =new List<List<int>>();
-                Generator generator = new Generator();
                 for (int i = 0; i < size; i++)
                 {
                     square.Add(generator.Generate(size));
                 }
 
-                var spliter = new Splitter();
                 spliter.Split(square);
 
-                var verifier = new Verifier();
                 if(verifier.Verify(square))
-                {
                     return square;
-                }
+                else
+                    square.Clear();
             }
         }
     }
