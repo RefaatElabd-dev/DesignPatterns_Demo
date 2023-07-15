@@ -21,9 +21,11 @@ namespace Observable.Ex2_WeakEvent
         }
     }
     public class Window {
+        Button button;
         public Window(Button button)
         {
-            button.Click += ButtonOnClick;
+            this.button = button;
+            this.button.Click += ButtonOnClick;
         }
 
         private void ButtonOnClick(object? sender, EventArgs e)
@@ -32,6 +34,7 @@ namespace Observable.Ex2_WeakEvent
         }
 
         ~Window() {
+            this.button.Click -= ButtonOnClick;
             Console.WriteLine("Window Object Freed");
         }
     }
@@ -52,6 +55,7 @@ namespace Observable.Ex2_WeakEvent
         ~Window2()
         {
             Console.WriteLine("Window Object Freed");
+
         }
     }
 }
