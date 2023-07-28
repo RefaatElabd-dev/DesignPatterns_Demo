@@ -43,8 +43,8 @@ namespace Observable.Ex2_WeakEvent
     {
         public Window2(Button button)
         {
-        //    WeakEventManager<Button, EventArgs>
-        //.AddHandler(button, "Clicked", ButtonOnClicked);
+            //    WeakEventManager<Button, EventArgs>
+            //   .AddHandler(button, "Clicked", ButtonOnClicked);
         }
 
         private void ButtonOnClick(object? sender, EventArgs e)
