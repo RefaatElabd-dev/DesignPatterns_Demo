@@ -6,14 +6,12 @@ using Coding.Exercise;
 using DotNetDesignPatternDemos.Creational.Factories;
 using Factory.AbstractFactory;
 using OSP;
-using ProtoType;
 using Singlton;
 using SRP;
 using System.Diagnostics;
 using System.Net;
 using static OSP.Specifications;
 using static System.Console;
-using Person = ProtoType.Person;
 
 namespace DesignPattern_Demo
 {
@@ -132,37 +130,6 @@ namespace DesignPattern_Demo
             //PersonFactory personFactory = new PersonFactory();
             //Console.WriteLine(personFactory.CreatePerson("Refaat").ToString());
             //var john = new Person(new[] { "John", "Smith" }, new IClonableAddress("London Road", 123));
-
-            //var jane = (Person)john.Clone();
-            //var jane = new Person(john);
-            //var jane = john.DeepCopy();
-            //jane.Address.HouseNumber = 321; // oops, John is now at 321
-
-            // this doesn't work
-            //var jane = john;
-
-            // but clone is typically shallow copy
-            //jane.Names[0] = "Jane";
-
-            //WriteLine(john);
-            //WriteLine(jane);
-
-            //inhertance // that approach doesn't scale: every child will ReConstruct and call his base
-            //var john = new Employee();
-            //john.Names = new[] { "John", "Doe" };
-            //john.Address = new IClonableAddress { HouseNumber = 123, StreetName = "London Road" };
-            //john.Salary = 321000;
-            //var copy = john.DeepCopyXml();
-
-            ////var e = john.DeepCopy<Employee>();
-            ////var p = john.DeepCopy<Person>();
-
-            //copy.Names[1] = "Smith";
-            //copy.Address.HouseNumber++;
-            //copy.Salary = 123000;
-
-            //WriteLine(john);
-            //WriteLine(copy);
 
             //var db = SingletonDB.Instance;
             //

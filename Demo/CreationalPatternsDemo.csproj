@@ -12,7 +12,6 @@
     <ProjectReference Include="..\Builder\Builder.csproj" />
     <ProjectReference Include="..\Factory\Factory.csproj" />
     <ProjectReference Include="..\OSP\OSP.csproj" />
-    <ProjectReference Include="..\ProtoType\ProtoType.csproj" />
     <ProjectReference Include="..\Singlton\Singlton.csproj" />
     <ProjectReference Include="..\SRP\SRP.csproj" />
   </ItemGroup>
