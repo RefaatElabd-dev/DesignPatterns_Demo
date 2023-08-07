@@ -27,5 +27,19 @@ namespace CQRS
             Queries?.Invoke(this, q);
             return (T)q.Result;
         }
+
+        public void UndoLast()
+        {
+            var e = Events.LastOrDefault();
+            if(e != null)
+            {
+                var ae = e as AgeEvent;
+                if(ae != null)
+                {
+                    Commands.Invoke(this, new ChangeAgeCommand(ae.Target, ae.OldValue) { Register = false });
+                    Events.Remove(ae);
+                }
+            }
+        }
     }
 }

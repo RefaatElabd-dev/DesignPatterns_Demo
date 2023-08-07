@@ -2,6 +2,7 @@
 {
     public class Command
     {
+        public bool Register = true;
     }
 
     public class ChangeAgeCommand: Command
