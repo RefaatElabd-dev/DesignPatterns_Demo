@@ -25,6 +25,7 @@
             var cac = c as ChangeAgeCommand;
             if(cac != null && cac.Person == this)
             {
+                this.EventBroker.Events.Add(new AgeEvent(this, Age, cac.Age));
                 Age = cac.Age;
             }
         }

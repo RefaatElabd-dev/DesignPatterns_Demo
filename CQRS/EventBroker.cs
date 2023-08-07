@@ -13,6 +13,10 @@ namespace CQRS
         public event EventHandler<Command> Commands;
         public event EventHandler<Query> Queries;
 
+        public EventBroker()
+        {
+            Events = new List<Event>();
+        }
         public void Command(Command c)
         {
             Commands?.Invoke(this, c);
