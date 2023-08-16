@@ -23,8 +23,12 @@ using static System.Console;
 //foreach (var node in tree)
 //    WriteLine(node.Value);
 
-var root2 = new Iterator.PreOrder.Node<int>(1,
-              new Iterator.PreOrder.Node<int>(2), new Iterator.PreOrder.Node<int>(3));
+var left = new Iterator.PreOrder.Node<int>(2,
+              new Iterator.PreOrder.Node<int>(3), new Iterator.PreOrder.Node<int>(4));
+var right = new Iterator.PreOrder.Node<int>(5,
+              new Iterator.PreOrder.Node<int>(6), new Iterator.PreOrder.Node<int>(7));
 
-foreach (var node in root2)
-     WriteLine(node.Value);
+var root2 = new Iterator.PreOrder.Node<int>(1, left, right);
+
+foreach (var val in root2)
+     WriteLine(val);

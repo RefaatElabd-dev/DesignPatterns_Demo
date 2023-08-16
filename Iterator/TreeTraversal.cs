@@ -40,7 +40,7 @@ namespace Iterator
         public void Reset()
         {
             Current = root;
-            yieldedStart = true;
+            yieldedStart = false;
         }
 
         public bool MoveNext()
