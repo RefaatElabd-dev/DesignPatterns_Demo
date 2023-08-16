@@ -31,8 +31,8 @@
 
         public IEnumerator<T> GetEnumerator()
         {
-            foreach (var node in PreOrder)
-                yield return (T)node;
+            foreach (var value in PreOrder)
+                yield return value;
         }
 
         public IEnumerable<T> PreOrder
@@ -40,7 +40,7 @@
             get
             {
                 foreach (var node in PreOrderTraverse(Current))
-                    yield return (T)node.Value;
+                    yield return node.Value;
             }
         }
 
